@@ -1,0 +1,50 @@
+﻿@model IEnumerable<PhamVietManh_PH529888.Models.SanPham>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-controller="SanPham" asp-action="Create" class="btn btn-primary">CREATE </a>
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoLuong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImgURL)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuong)
+            </td>
+            <td>
+                <img style="width:100px" src="~/img/@item.ImgURL" alt="Alternate Text" />
+            </td>
+            <td>
+                    <a asp-controller="SanPham" asp-action="Edit" asp-route-id="@item.id" class="btn btn-primary">Edit </a>
+            </td>
+                <td>
+                    <a asp-controller="SanPham" asp-action="Delete" asp-route-id="@item.id" class="btn btn-primary"><i class="bi bi-trash-fill"></i> Delete</a>
+
+                </td>
+        </tr>
+}
+    </tbody>
+</table>
